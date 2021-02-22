@@ -8,7 +8,7 @@
       <h1>{{product.title}}</h1>
       <h3>${{product.price}}</h3>
       <input type="text" class="text.center col-1 mr-2 p-1"/>
-      <button class="btn btn-primary">Add To cart </button> 
+      <button class="btn btn-primary" @click="addToCart()">Add To cart </button> 
       <p class="mt-4">{{product.description}} </p>
 
   </div>
@@ -26,6 +26,15 @@ product(){
 },
 mounted(){
 this.$store.dispatch('getProduct',this.id)
+},
+methods:{
+    addToCart(){
+          this.$store.dispatch("addProductToCart",{
+      product:this.product,
+      quantity:1
+    })
+
+}
 }
 }
 </script>

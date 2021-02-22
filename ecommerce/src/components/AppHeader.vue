@@ -12,7 +12,7 @@
           <div class="dropdown open">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
                       aria-expanded="false">
-                    0 Cart  </button>
+                    {{cartItemCount}} Cart  </button>
                     <div @click='$event.stopPropagation()'>
                         <Minicart/>
                     </div>
@@ -25,14 +25,23 @@
 </template>
 
 <script>
-
+import {mapGetters} from "vuex"
 import Minicart from './Minicart.vue'
 export default {
 components:{
     Minicart
 
+},
+computed:
+{
+...mapGetters(["cartItemCount"])
+
+/*cartItemCount(){
+    return this.$store.getters.cartItemCount
+}*/
 }
 }
+
 </script>
 
 <style>
